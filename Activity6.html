@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BARLONGO CREATIVE'S</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        html { scroll-behavior: smooth; background-color: #140a23; }
+        /* Hide the scrollbar (page can still be scrolled with mouse wheel/touch) */
+        html, body { scrollbar-width: none; -ms-overflow-style: none; }
+        html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; width: 0; height: 0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+            min-height: 100vh; overflow-x: hidden; position: relative;
+        }
+        /* Background video styling */
+        #bg-video {
+            position: fixed; top: 50%; left: 50%; min-width: 100%; min-height: 100%;
+            width: auto; height: auto; z-index: -2; transform: translate(-50%, -50%); object-fit: cover;
+        }
+        .video-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(20, 10, 35, 0.5); z-index: -1;
+        }
+        /* Header & Navigation Bar */
+        header { width: 100%; background-color: #3e1f2b; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); }
+        .header-brand { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 14px 30px; border-bottom: 1px solid rgba(255, 255, 255, 0.6); }
+        .header-logo { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; }
+        .header-brand span { color: #f5f5f5; font-size: 17px; font-weight: bold; text-transform: uppercase; }
+        .navbar { display: flex; justify-content: center; gap: 30px; padding: 10px 30px 14px 30px; background-color: rgba(255, 255, 255, 0.08); }
+        .navbar a {
+            color: #e8d9dd; text-decoration: none; font-size: 13px; font-weight: bold;
+            text-transform: uppercase; border-bottom: 2px solid transparent; padding-bottom: 6px;
+        }
+        .navbar a:hover { color: #ffffff; }
+        .navbar a.active { color: #ffffff; border-bottom: 2px solid #ffd700; }
+
+        /* Main Layout & Centered Card (same size and padding as Activity 5) */
+        main { flex: 1; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding: 20px 0; }
+        .card {
+            background: #ffffff; backdrop-filter: blur(12px); padding: 40px;
+            border-radius: 20px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35); max-width: 900px; width: 90%;
+            margin: 20px auto; text-align: center; border: 1px solid rgba(0, 0, 0, 0.08);
+            height: 635px; /* fixed size, same as Home card */
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+        }
+
+        .cta-btn { padding: 14px 36px; }
+
+        .profile-img {
+            width: 130px; height: 130px; border-radius: 50%; object-fit: cover;
+            border: 4px solid #3e1f2b; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+
+        h1 { color: #4a154b; font-size: 26px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .bio-text { color: #333333; font-size: 14px; line-height: 1.7; text-align: left; width: 100%; max-width: 750px; }
+        .bio-text p { margin-bottom: 16px; }
+        .bio-text p:last-child { margin-bottom: 0; }
+
+        footer { background-color: #3e1f2b; color: white; text-align: center; padding: 15px; font-size: 12px; width: 100%; }
+
+        /* Same header text spacing as Home */
+        .header-brand span { letter-spacing: 0.5px; }
+        .navbar a { letter-spacing: 0.5px; }
+
+        @media (max-width: 768px) {
+            .card { height: auto; min-height: 635px; }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Background Video & Overlay -->
+    <video autoplay loop muted playsinline id="bg-video"><source src="violet.mp4" type="video/mp4"></video>
+    <div class="video-overlay"></div>
+
+    <!-- Header & Navigation Bar -->
+    <header>
+        <div class="header-brand">
+            <img src="logo.png" alt="Logo" class="header-logo">
+            <span>Barlongo Creatives</span>
+        </div>
+        <nav class="navbar">
+            <a href="Activity5.html">HOME</a>
+            <a href="Activity6.html" class="active">ABOUT</a>
+            <a href="index.html">GALLERY</a>
+            <a href="Activity8_Barlongo.html">CONTACT</a>
+        </nav>
+    </header>
+
+    <!-- Main Content Card -->
+    <main>
+        <div class="card">
+            <img src="Barlongo.png" alt="Creator Profile" class="profile-img">
+
+            <h1>About the Collection</h1>
+
+            <div class="bio-text">
+                <p>Barlongo Creatives is a digital portfolio created to showcase innovation, technical expertise, and creative achievements in information technology.</p>
+                <p>Through continuous development and contemporary design practices, the collection reflects a dedication to writing efficient code, designing responsive interfaces, and addressing complex technical challenges.</p>
+                <p>Each portfolio element demonstrates ongoing growth, adaptability, and a commitment to excellence in digital development.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>&copy; 2026 Barlongo Creatives</footer>
+    <!-- Highlight the nav link of the page you are currently on -->
+    <script>
+        (function () {
+            var current = location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('.navbar a').forEach(function (link) {
+                link.classList.toggle('active', link.getAttribute('href') === current);
+            });
+        })();
+    </script>
+</body>
+</html>
